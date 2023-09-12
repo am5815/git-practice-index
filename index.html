@@ -5,11 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
   </head>
+  <style>
+    :root{
+      --bg-color: #fff;
+      --text-color: #000;
+    }
+    body.dark{
+      --bg-color: #1f1f1f;
+      --text-color: #fff;
+    }
+    body{
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+    .container{
+      max-width: 800px;
+      margin-top: 50px;
+      margin-inline: auto;
+      padding-inline: 50px;
+    }
+    #switch{
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      cursor: pointer;
+      width: 80px;
+      height: 30px;
+      border: var(--text-color) 1px solid;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  </style>
   <body>
-	<script src="index.js"></script>
-    <div>
+	  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const switchBtn = document.getElementById('switch');
+        const body = document.querySelector('body');
+        switchBtn.innerHTML = 'dark_mode';
+        switchBtn.addEventListener('click', () => {
+          body.classList.toggle('dark');
+          switchBtn.classList.toggle('dark');
+          if (switchBtn.classList.contains('dark')) {
+            switchBtn.innerHTML = 'light';
+          } else {
+            switchBtn.innerHTML = 'dark';
+          }
+        })
+      })
+    </script>
+    <div class="container">
+        <span id="switch"></span>
         <h2>
             Enter Team Name
         </h2>
@@ -17,7 +66,7 @@
             Enter Project description
         </p>
         <p>
-            Team members
+            <p>Team members</p>
             <ul>
                 <li>Member 1</li>
                 <li>Member 2</li>
@@ -29,17 +78,19 @@
           PetSafe
         </h2>
         <p>
-
+          This project seeks to support pet owners and animal lovers.  
+          The vision for this project is to create a place where pet lovers can find restaurants, hotels, and other public venues that are pet-friendly, 
+          provide a platform to help pet owners find lost pets, and promote adoption of pets without homes.
         </p>
-        <p>
-          Team members
+        <div>
+          <h3>Team members</h3>
           <ul>
             <li>Cornelia Mengdi Wang</li>
             <li>Christol Chenfei Yu</li>
             <li>Member 3</li>
             <li>Member 4</li>
           </ul>
-        </p>
+        </div>
     </div>
   </body>
 </html>
